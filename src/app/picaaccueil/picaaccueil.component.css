@@ -1,0 +1,53 @@
+.card {
+    margin:10px;
+}
+
+.card-hover:hover{
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+a.custom-card,
+a.custom-card:hover {
+  color: inherit;
+}
+
+#card-info {
+    order: 1;
+}
+
+#card-tuto {
+    order: 3;
+}
+
+#div-info {
+    order: 2;
+}
+
+#div-tuto {
+    order: 4;
+}
+
+@media (min-width: 768px) {
+    #card-info {
+        order: 1;
+    }
+    
+    #card-tuto {
+        order: 2;
+    }
+    
+    #div-info {
+        order: 3;
+    }
+}
+
+svg {
+    display: block; 
+    margin:auto; 
+    margin-top:4px
+}
+
+.row {
+    margin-bottom: 15px;
+}

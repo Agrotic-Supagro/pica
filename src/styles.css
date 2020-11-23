@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~leaflet/dist/leaflet.css";
+
+.legend {
+    line-height: 25px;
+    color: #555;
+}
+    
+.legend i {
+   	float: left;
+   	margin-right: 8px;
+   	opacity: 0.7;
+}
+
+.square {
+    width: 18px;
+    height: 15px;
+}
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.circlepadding {
+    background : #ff7800; 
+    border-radius : 50%;
+    width: 15px;
+    height: 15px;
+    border: solid black;
+    border-width: 2px;
+}
+
+
+

@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "pica_point_entree",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { }, "geometry": { "type": "Point", "coordinates": [ 3.842628614129383, 43.54683414307403 ] } },
+{ "type": "Feature", "properties": { }, "geometry": { "type": "Point", "coordinates": [ 3.847819272844737, 43.542169872302523 ] } },
+{ "type": "Feature", "properties": { }, "geometry": { "type": "Point", "coordinates": [ 3.867839638443495, 43.531683510969692 ] } }
+]
+}

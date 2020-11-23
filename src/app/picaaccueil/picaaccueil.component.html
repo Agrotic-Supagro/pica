@@ -1,0 +1,127 @@
+<div class="container">
+    <div class="row  align-items-center">
+      <div class="col-4 col-lg-5">
+      </div>
+      <div class="col-4 col-lg-2 text-center">
+          <img src="assets/images/logopica.png" alt="Logo Pic@ by Nina et Corentin" width="100%" style="float:right">
+      </div>
+      <div class="col-4 col-lg-5">
+      </div>
+    </div>
+</div>
+  <div class="container">
+    <div class="jumbotron">
+        <h2 class="text-center" style="margin-bottom: 32px;">Bienvenue sur la plateforme d'échantillonnage en viticulture Pica!</h2>
+        <img src="assets/images/oenoview.png" alt="Oenoview" width="100%">
+    </div>
+    <div class="row">
+        <div class="col-3"><p class="font-weight-bold" style="text-align:right">Objectif :</p></div>
+        <div class="col-8">Définissez un plan d'échantillonnage pour estimer le rendement de trois parcelles. Vous pourrez vous aider d'images de vigueur acquises par satellite à véraison. Trois millésimes 2017, 2018 et 2019 sont inclus dans le jeu.</div>
+        <div class="col-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <a (click)="startEchantillon()" type="button" class="btn btn-success btn-lg btn-block">Cliquez ici pour commencer à échantilllonner</a>
+        </div>        
+    </div>
+    <div class="row" style="display:flexbox">
+        <div class="col-12 col-md-6" id="card-info" >
+                <div class="card card-hover" (click)="afficher_div('div-info','div-tuto')">
+                    <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-gear text-success" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display: block; margin:auto; margin-top:4px">
+                        <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
+                        <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
+                    </svg>
+                    <div class="card-body">
+                        <h5 class="card-title">Information</h5>
+                        <p class="card-text">Retrouvez ici quelques informations liées à la conception du jeu.</p>
+                    </div>
+                </div>
+        </div>
+        <div class="col-12 col-md-6" id="card-tuto">
+                <div class="card card-hover" (click)="afficher_div('div-tuto','div-info')">                
+                    <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-controller text-success" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M11.119 2.693c.904.19 1.75.495 2.235.98.407.408.779 1.05 1.094 1.772.32.733.599 1.591.805 2.466.206.875.34 1.78.364 2.606.024.815-.059 1.602-.328 2.21a1.42 1.42 0 0 1-1.445.83c-.636-.067-1.115-.394-1.513-.773a11.307 11.307 0 0 1-.739-.809c-.126-.147-.25-.291-.368-.422-.728-.804-1.597-1.527-3.224-1.527-1.627 0-2.496.723-3.224 1.527-.119.131-.242.275-.368.422-.243.283-.494.576-.739.81-.398.378-.877.705-1.513.772a1.42 1.42 0 0 1-1.445-.83c-.27-.608-.352-1.395-.329-2.21.024-.826.16-1.73.365-2.606.206-.875.486-1.733.805-2.466.315-.722.687-1.364 1.094-1.772.486-.485 1.331-.79 2.235-.98.932-.196 2.03-.292 3.119-.292 1.089 0 2.187.096 3.119.292zm-6.032.979c-.877.185-1.469.443-1.733.708-.276.276-.587.783-.885 1.465a13.748 13.748 0 0 0-.748 2.295 12.351 12.351 0 0 0-.339 2.406c-.022.755.062 1.368.243 1.776a.42.42 0 0 0 .426.24c.327-.034.61-.199.929-.502.212-.202.4-.423.615-.674.133-.156.276-.323.44-.505C4.861 9.97 5.978 9.026 8 9.026s3.139.943 3.965 1.855c.164.182.307.35.44.505.214.25.403.472.615.674.318.303.601.468.929.503a.42.42 0 0 0 .426-.241c.18-.408.265-1.02.243-1.776a12.354 12.354 0 0 0-.339-2.406 13.753 13.753 0 0 0-.748-2.295c-.298-.682-.61-1.19-.885-1.465-.264-.265-.856-.523-1.733-.708-.85-.179-1.877-.27-2.913-.27-1.036 0-2.063.091-2.913.27z"/>
+                        <path d="M11.5 6.026a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-1 1a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-1 1a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-7-2.5h1v3h-1v-3z"/>
+                        <path d="M3.5 6.526h3v1h-3v-1zM3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .258.966l-1.932.518a.5.5 0 0 1-.612-.354zm9.976 0a.5.5 0 0 0-.353-.613l-1.932-.518a.5.5 0 1 0-.259.966l1.932.518a.5.5 0 0 0 .612-.354z"/>
+                    </svg>
+                    <div class="card-body">
+                        <h5 class="card-title">Tutoriel</h5>
+                        <p class="card-text">Pour connaitre le principe et les objectifs du jeu, cliquez ici.</p>
+                    </div>
+                </div>
+        </div>
+        <div class="card col-12" id="div-info" style="display:none">
+            <div class="card-header">
+                <h5>Ici seront les informations.</h5>
+            </div>
+            <div class="card-body">
+                Coucou ici sont les informations du jeu.
+            </div>
+        </div>
+        <div class="card col-12" id="div-tuto" style="display:none">
+            <div class="card-header">
+                <h5>Tutoriel du jeu</h5>
+            </div>
+            <div class="card-body">
+                <div id="carousel-tuto" class="carousel slide" data-ride="carousel" data-interval="0">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-tuto" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-tuto" data-slide-to="1"></li>
+                        <li data-target="#carousel-tuto" data-slide-to="2"></li>
+                      </ol>
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img class="d-block w-100" src="assets/images/institutAgro_MSA_logo.png" alt="First slide">
+                          <div class="carousel-caption d-none d-md-block">
+                            <h5>Première image</h5>
+                            <p>Première image</p>
+                          </div>
+                        </div>
+                        <div class="carousel-item">
+                          <img class="d-block w-100" src="assets/images/logo_masnum.png" alt="Second slide">
+                          <div class="carousel-caption d-none d-md-block">
+                            <h5>Deuxième image</h5>
+                            <p>Deuxième image</p>
+                          </div>
+                        </div>
+                        <div class="carousel-item">
+                          <img class="d-block w-100" src="assets/images/Logo_MUSE_Original.png" alt="Third slide">
+                          <div class="carousel-caption d-none d-md-block">
+                            <h5>Troisième image</h5>
+                            <p>Troisième image</p>
+                          </div>
+                        </div>
+                      </div>
+                      <a class="carousel-control-prev" href="#carousel-tuto" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carousel-tuto" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-justify" style="font-size:12px">
+            Ce jeu a été conçu dans le cadre du projet Mas numérique. Il valorise des travaux de thèse et des données de vigueur réellement acquises sur le Domaine du Chapitre de Montpellier SupAgro par le service Oenoview. 
+            Vous retrouverez plus d'information sur le projet Mas numérique sur son site internet : <a href="http://lemasnumerique.agrotic.org/" target="_blank">http://lemasnumerique.agrotic.org/</a>
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col-6 col-lg-3 col-md-6 text-center">
+            <a href="https://muse.edu.umontpellier.fr/" target="_blank"><img src="assets/images/Logo_MUSE_Original.png" alt="Logo Muse" width="100%"></a>
+        </div>
+        <div class="col-6 col-lg-3 col-md-6 text-center">
+            <a href="http://lemasnumerique.agrotic.org/" target="_blank"><img src="assets/images/logo_masnum.png" alt="Logo Mas numérique" width="100%"></a>
+        </div>
+        <div class="col-6 col-lg-3 col-md-6 text-center">
+            <a href="https://www.montpellier-supagro.fr/" target="_blank"><img src="assets/images/institutAgro_MSA_logo.png" alt="Logo Institut Agro | Montpellier SupAgro" width="100%"></a>
+        </div>
+        <div class="col-6 col-lg-3 col-md-6 text-center">
+            <a href="https://fruitionsciences.com/fr/home" target="_blank"><img src="assets/images/FruitionSciences.png" alt="Logo Fruition" width="100%"></a>
+        </div>
+    </div>
+</div>
