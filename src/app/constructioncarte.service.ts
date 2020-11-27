@@ -1293,7 +1293,7 @@ export class ConstructioncarteService {
         container.style.width = '100px';
         container.style.height = '60px';
         container.style.padding = '3px';
-        container.innerHTML = 'Ajuster la transparence:<br> <input type="range" value="'+transparenceValue+'" id="opacity" class="form-control-range"/>';
+        container.innerHTML = 'Ajust Opacity:<br> <input type="range" value="'+transparenceValue+'" id="opacity" class="form-control-range"/>';
         L.DomEvent.disableClickPropagation(container);
 
         return container;
@@ -1332,7 +1332,7 @@ export class ConstructioncarteService {
          div.innerHTML += '<i class="square" style="background:' + getColor(grades[i] + 0.01) + '"></i> ' +
          grades[i] + (grades[i + 1] ? '&ndash;' + grades[i +1] + '<br>' : '+');
       };
-      div.innerHTML += '<br><br><i class="circlepadding"></i> <strong>Point d\'entrée</strong>';
+      div.innerHTML += '<br><br><i class="circlepadding"></i> <strong>Entry point</strong>';
       return div;
       
    };  

@@ -12,19 +12,19 @@
 <div class="container">
     <div class="row">
         <div class="col-12" [hidden]="premierPlan">
-            Les marqueurs <img src="assets/images/iconeechantillon_ghost.png" style="height:30px;"> correspondent à votre dernier plan d'échantillonnage.
+            The markers <img src="assets/images/iconeechantillon_ghost.png" style="height:30px;"> correspond to your last sampling plan.
         </div>
         <div class="col-12" id="nbPoints">
-            Le nombre de point doit être compris entre 3 et 10. <br>
-            <span [style.color]="(nbItems<3) ? 'red' : ((nbItems>2) ? 'green' : null)">Nombre de point(s) actuel(s) : {{nbItems}} </span> <br>
-            <span [style.color]="(nbItems>9) ? 'red' : ((nbItems<10) ? 'green' : null)">Nombre de point(s) restant(s) : {{10-nbItems}}</span>
+            The number of point must be between 3 and 10. <br>
+            <span [style.color]="(nbItems<3) ? 'red' : ((nbItems>2) ? 'green' : null)">Current number of points : {{nbItems}} </span> <br>
+            <span [style.color]="(nbItems>9) ? 'red' : ((nbItems<10) ? 'green' : null)">Number of points remaining : {{10-nbItems}}</span>
         </div>
     </div>
     <form (ngSubmit)="onSubmit()">
         <div class="row">           
             <div class="col-12 text-center" id="valid_echant">
                 <div>
-                    <button class="btn btn-primary btn-lg btn-block" id = "valider" [disabled]="nbItems < 3" type="submit">Valider mon échantillonnage</button><br>
+                    <button class="btn btn-primary btn-lg btn-block" id = "valider" [disabled]="nbItems < 3" type="submit">Submit my sampling plan</button><br>
                 </div>
             </div>
         </div>        

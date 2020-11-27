@@ -15,33 +15,33 @@
             <table class="table table-dark table-bordered table-hover" data-href="#">
                 <thead>
                     <tr>
-                        <th scope="col">Parcours</th>
-                        <th scope="col">Temps</th>
-                        <th scope="col">Erreur</th>
-                        <th scope="col">Nombre de Points</th>
+                        <th scope="col">Sampling Plan</th>
+                        <th scope="col">Amount of time</th>
+                        <th scope="col">Error</th>
+                        <th scope="col">Number of points</th>
                     </tr> 
                 </thead>                      
                 <tbody>                    
                     <tr *ngFor="let planJoueur of PlanjoueurService.plansjoueur" (click)="changePlan(planJoueur)">
-                        <td>Essai n°{{planJoueur.index+1}}</td>
-                        <td>{{planJoueur.temps[0]}} min et {{planJoueur.temps[1]}} sec</td>                        
+                        <td>Attempt n°{{planJoueur.index+1}}</td>
+                        <td>{{planJoueur.temps[0]}} min & {{planJoueur.temps[1]}} sec</td>                        
                         <td>{{planJoueur.erreur}}%</td>                                                
                         <td>{{planJoueur.nbPoints}}</td>
                     </tr>
                     <tr (click)="changePlanOptimal('rien')">
-                        <td scope="row">Le parcours optimal :</td>
+                        <td scope="row">Optimized plan</td>
                         <td id = "parcoursOptimal_temps"></td>
                         <td id = "parcoursOptimal_erreur"></td>                        
                         <td id = "parcoursOptimal_nbPoint"></td>
                     </tr>
                     <tr id="ligneParcoursOptimalmoins" (click)="changePlanOptimal('moins')">
-                        <td scope="row">Le parcours optimal avec un point de moins :</td>
+                        <td scope="row">The optimised plan with one point less</td>
                         <td id = "parcoursOptimalmoins_temps"></td>
                         <td id = "parcoursOptimalmoins_erreur"></td>                        
                         <td id = "parcoursOptimalmoins_nbPoint"></td>
                     </tr>
                     <tr id="ligneParcoursOptimalplus" (click)="changePlanOptimal('plus')">
-                        <td scope="row">Le parcours optimal avec un point de plus :</td>
+                        <td scope="row">The optimised plan with one point more</td>
                         <td id = "parcoursOptimalplus_temps"></td>
                         <td id = "parcoursOptimalplus_erreur"></td>                        
                         <td id = "parcoursOptimalplus_nbPoint"></td>
@@ -50,7 +50,7 @@
             </table>
         </div>
         <div class="col-12">
-            <a routerLink="parametre" type="button" class="btn btn-success btn-lg btn-block" style="color: white;" (click) = "restart()">Recommencer avec des nouveaux paramètres</a>
+            <a routerLink="parametre" type="button" class="btn btn-success btn-lg btn-block" style="color: white;" (click) = "restart()">Start again with new settings</a>
         </div>
     </div>
 </div>
