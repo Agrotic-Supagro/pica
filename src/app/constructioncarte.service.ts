@@ -1240,7 +1240,7 @@ export class ConstructioncarteService {
     }
     this.mymap = L.map(map,{
       maxZoom: 21,
-      minZoom: 16,
+      minZoom: 17,
       maxBounds: this.choixParcelle.get_bounds(),
     }).setView(this.choixParcelle.get_center(), 17);
     
