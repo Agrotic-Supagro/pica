@@ -51,7 +51,7 @@ export class PicaechantillonnerComponent implements AfterViewInit {
     if (this.PlanjoueurService.plansjoueur.length >0) {
       this.addGhost();
       this.premierPlan = false;
-    };
+    };  
   }  
 
   addMapEchantillonner () {
@@ -143,7 +143,7 @@ export class PicaechantillonnerComponent implements AfterViewInit {
         layer.dragging.enable();
         this.displPoint(drawnItems);
       } else {
-        alert('Pas dans la parcelle!');
+        alert('Les marqueurs ne peuvent être placés que dans la parcelle!');
       }
     } else if (drawnItems.getLayers().length > 9) {
       document.getElementById('avertissement').innerHTML = 'Trop de point!';

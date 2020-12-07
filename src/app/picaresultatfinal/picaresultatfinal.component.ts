@@ -43,7 +43,7 @@ export class PicaresultatfinalComponent implements AfterViewInit {
     this.markerPlan = this.ConstructioncarteService.addResultatJoueur(this.nbPoint, this.points, this.plansJoueur[0].ordre);
     this.picaOptimalParcelleMillesime = this.ConstructioncarteService.paramParcoursOptimal(this.nbPoint);
     this.remplirTableauOptimal();
-    this.afficherParcoursOptimal(this.nbPoint);
+    this.afficherParcoursOptimal(this.nbPoint);   
   }
 
   remplirTableauOptimal() {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as L from 'leaflet';
 import { ListeparcelleService } from './listeparcelle.service'
 import { ChoixUtilisateurService } from './choix-utilisateur.service'
+import { $ } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -1211,6 +1212,8 @@ export class ConstructioncarteService {
   chapitrecorner2 = L.latLng(43.55425783681239, 3.87682261526906);
   chapitrecorner1 = L.latLng(43.526153988197812, 3.833899052720867);
   chapitremaxbounds = L.latLngBounds(this.chapitrecorner1,this.chapitrecorner2);
+  public baseLayer;
+  legend;
 
   getIcon(id) {
      var path = 'assets/images/iconeechantillon'+id+'.png';
@@ -1273,10 +1276,13 @@ export class ConstructioncarteService {
     }}).addTo(this.mymap);
 
     var legend = new L.Control({position: 'bottomright'});
-    legend.onAdd = this.addlegend;
+    legend.onAdd = this.addlegendOenoview;
     legend.addTo(this.mymap);
-
     this.addChangeTransparency();
+    
+    if(map === "mymapresultatfinal") {
+       this.addRdtMap();
+    };
   };
 
   addChangeTransparency() {
@@ -1290,10 +1296,11 @@ export class ConstructioncarteService {
         var container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
 
         container.style.backgroundColor = 'white';     
-        container.style.width = '100px';
-        container.style.height = '60px';
-        container.style.padding = '3px';
-        container.innerHTML = 'Ajuster la transparence:<br> <input type="range" value="'+transparenceValue+'" id="opacity" class="form-control-range"/>';
+        container.style.width = '190px';
+        container.style.height = '50px';
+        container.style.padding = '5px';
+        container.style.fontSize = '15px';
+        container.innerHTML = 'Ajuster la transparence:<br><input type="range" value="'+transparenceValue+'" id="opacity" class="form-control-range"/>';
         L.DomEvent.disableClickPropagation(container);
 
         return container;
@@ -1301,40 +1308,39 @@ export class ConstructioncarteService {
     });
     this.mymap.addControl(new transparency());
     document.getElementById('opacity').addEventListener('input',() => {       
-     this.changeTransparency();
+     this.changeTransparency(this.picaLayer);
     })
   }
   
 
-  changeTransparency() {
+  changeTransparency(layer) {
    var value = (<HTMLInputElement>document.getElementById("opacity")).value;
    this.transparence = parseInt(value);
-   this.picaLayer.setOpacity(1-parseInt(value)/100);
+   layer.setOpacity(1-parseInt(value)/100);
   }
 
-   addlegend() {
+   addlegendOenoview() {
+      var divlegend = L.DomUtil.create('div', 'info legend');
       function getColor(d) {
-         return d > 0.45 ? '#417324' :         
-                d > 0.40 ? '#53872A' :         
-                d > 0.35 ? '#85C630' :         
-                d > 0.30 ? '#FAEC7F' :         
-                d > 0.25 ? '#E2AD3B' :         
-                d > 0.20 ? '#BF5C00' :         
-                d > 0.15 ? '#901811' :
-                d > 0.10 ? '#5C110F' :
-                        '#4D006C' ;
+            return d > 0.45 ? '#417324' :         
+                  d > 0.40 ? '#53872A' :         
+                  d > 0.35 ? '#85C630' :         
+                  d > 0.30 ? '#FAEC7F' :         
+                  d > 0.25 ? '#E2AD3B' :         
+                  d > 0.20 ? '#BF5C00' :         
+                  d > 0.15 ? '#901811' :
+                  d > 0.10 ? '#5C110F' :
+                           '#4D006C' ;
       };
-      var div = L.DomUtil.create('div', 'info legend'),
-              grades = [0,0.1,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.5];
-      div.innerHTML = '<strong> GLCV </strong> <br>';
+      var grades = [0,0.1,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.5];
+      divlegend.innerHTML = '<strong> GLCV </strong> <br>';
 
       for (var i=0; i < grades.length; i++) {
-         div.innerHTML += '<i class="square" style="background:' + getColor(grades[i] + 0.01) + '"></i> ' +
+         divlegend.innerHTML += '<i class="square" style="background:' + getColor(grades[i] + 0.01) + '"></i> ' +
          grades[i] + (grades[i + 1] ? '&ndash;' + grades[i +1] + '<br>' : '+');
       };
-      div.innerHTML += '<br><br><i class="circlepadding"></i> <strong>Point d\'entrée</strong>';
-      return div;
-      
+      divlegend.innerHTML += '<br><br><i class="circlepadding"></i> <strong>Point d\'entrée</strong>';
+      return divlegend;
    };  
 
   addResultatJoueur (nbPoint, points, index) {
@@ -1371,6 +1377,75 @@ export class ConstructioncarteService {
    return picaOptimalParcelleMillesime;
   }
 
+  
+  addRdtMap() {
+   var rdtMap;
+   if (this.millesime === "pica2017") {
+      rdtMap = this.choixParcelle["rdt2017"];
+   } else if (this.millesime === "pica2018") {      
+      rdtMap = this.choixParcelle["rdt2018"];
+   } else if (this.millesime === "pica2019") {
+      rdtMap = this.choixParcelle["rdt2019"];      
+   }
+   var overlayMap = {
+      "Oenoview" : this.picaLayer,
+      "Rendement": rdtMap
+   }
+   L.control.layers(overlayMap, null,{collapsed: false}).addTo(this.mymap); 
+   
+   function updateLegend(nom) {
+      var divlegend = document.getElementsByClassName("info legend");
+      divlegend[0].innerHTML="";
+      if (nom === "Oenoview") {
+         function getColor(d) {
+               return d > 0.45 ? '#417324' :         
+                     d > 0.40 ? '#53872A' :         
+                     d > 0.35 ? '#85C630' :         
+                     d > 0.30 ? '#FAEC7F' :         
+                     d > 0.25 ? '#E2AD3B' :         
+                     d > 0.20 ? '#BF5C00' :         
+                     d > 0.15 ? '#901811' :
+                     d > 0.10 ? '#5C110F' :
+                              '#4D006C' ;
+         };
+         var grades = [0,0.1,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.5];
+         divlegend[0].innerHTML = '<strong> GLCV </strong> <br>';
+   
+         for (var i=0; i < grades.length; i++) {
+            divlegend[0].innerHTML += '<i class="square" style="background:' + getColor(grades[i] + 0.01) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i +1] + '<br>' : '+');
+         };
+         divlegend[0].innerHTML += '<br><br><i class="circlepadding"></i> <strong>Point d\'entrée</strong>';
+      } else if (nom === "Rendement") {
+         function getColor(d) {
+            return d > 8 ? '#417324' :         
+                  d > 7.5 ? '#53872A' :         
+                  d > 7 ? '#85C630' :         
+                  d > 6.5 ? '#FAEC7F' :         
+                  d > 6 ? '#E2AD3B' :         
+                  d > 5.5 ? '#BF5C00' :         
+                  d > 5 ? '#901811' :
+                  d > 4.5 ? '#5C110F' :
+                           '#4D006C' ;
+         };
+         var grades = [4,4.5,5,5.5,6,6.5,7,7.5,8];
+         divlegend[0].innerHTML = '<strong> Rendement (kg/Ha) </strong> <br>';
+
+         for (var i=0; i < grades.length; i++) {
+            divlegend[0].innerHTML += '<i class="square" style="background:' + getColor(grades[i] + 0.01) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i +1] + '<br>' : '+');
+         };
+         divlegend[0].innerHTML += '<br><br><i class="circlepadding"></i> <strong>Point d\'entrée</strong>';
+      }
+   }
+
+   this.mymap.on('baselayerchange', function (e) {
+      updateLegend(e.name)
+   });
+   document.getElementById('opacity').addEventListener('input',() => {       
+      this.changeTransparency(rdtMap);
+     })
+}
 
   constructor(private ListeparcelleService : ListeparcelleService, private ChoixUtilisateurService : ChoixUtilisateurService,) { }
 }
